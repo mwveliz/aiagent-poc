@@ -8,8 +8,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Ollama CLI
-RUN curl -fsSL https://ollama.com/download/linux | bash
-
+RUN curl -fsSL https://ollama.com/install.sh | sh
 # Install Python dependencies
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
