@@ -15,7 +15,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+
 model_name = "phi4-mini"
+model_name = "tinyllama:1.1b"
+model_name = "qwen2:7b-instruct-q4_0"
 
 class GenerateRequest(BaseModel):
     prompt: str

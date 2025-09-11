@@ -14,7 +14,7 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 # Start the Ollama server in the background and pull the model
 RUN ollama serve & \
     sleep 5 && \
-    ollama pull phi4-mini
+    ollama pull qwen2:7b-instruct-q4_0
 
 # Stage 2: Final image
 FROM python:3.12-slim
