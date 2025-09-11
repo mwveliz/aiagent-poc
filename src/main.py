@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
 from starlette.middleware.cors import CORSMiddleware
-from rag import generate_response_with_rag  # Import RAG logic
+from .rag.rag import generate_response_with_rag  # Import RAG logic
 from starlette.responses import StreamingResponse
 import ollama
 
