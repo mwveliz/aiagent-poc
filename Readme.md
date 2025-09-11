@@ -38,10 +38,10 @@ pip install -r requirements.txt
 
 ## Running the Application
 
-### 1. Run Locally
+### 1. Run Locally (with 2 workers)
 Start the FastAPI application:
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000
+uvicorn src.main:app --host 0.0.0.0 --port 8000 --workers 2
 ```
 
 ### 2. Run with Docker
@@ -116,13 +116,21 @@ docker run -p 8000:8000 aiagent-poc
     ```
 
 
-- **Docker Build Issues**:
-    Ensure Docker is installed and running. Rebuild the image if necessary:
+- **Docker Build**:
+    Ensure Docker is installed and running. Build the image if necessary:
     ```bash
     docker build --no-cache -t aiagent-poc .
     ```
 
+
+- **Docker Run**:
+    ```bash
+    docker run -p 8000:8000 aiagent-poc
+    ```
+
 ---
+
+
 
 ## License
 
