@@ -115,15 +115,6 @@ docker run -p 8000:8000 aiagent-poc
     ollama serve
     ```
 
----
-
-## Troubleshooting
-
-- **`ModuleNotFoundError: No module named 'sentence_transformers'`**:
-    Ensure `sentence-transformers` is installed:
-    ```bash
-    pip install sentence-transformers
-    ```
 
 - **Docker Build Issues**:
     Ensure Docker is installed and running. Rebuild the image if necessary:
