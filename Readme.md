@@ -1,6 +1,6 @@
 # AI Agent PoC
 
-This project is a FastAPI-based application that integrates with the Ollama model (`phi4-mini`) to generate responses and perform Retrieval-Augmented Generation (RAG). It supports both standard and streaming responses.
+This project is a FastAPI-based application that integrates with the Ollama model (`qwen2:7b-instruct-q4_0`) to generate responses and perform Retrieval-Augmented Generation (RAG). It supports both standard and streaming responses.
 
 ---
 
@@ -108,10 +108,10 @@ docker run -p 8000:8000 aiagent-poc
 
 ## Notes
 
-- The `ollama` CLI is used to serve the `phi4-mini` model. The Dockerfile ensures the model is pulled and served automatically.
-- If running locally, ensure the `ollama` CLI is installed and the `phi4-mini` model is pulled:
+- The `ollama` CLI is used to serve the `qwen2:7b-instruct-q4_0` model. The Dockerfile ensures the model is pulled and served automatically.
+- If running locally, ensure the `ollama` CLI is installed and the `qwen2:7b-instruct-q4_0` model is pulled:
     ```bash
-    ollama pull phi4-mini
+    ollama pull qwen2:7b-instruct-q4_0
     ollama serve
     ```
 
