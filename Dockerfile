@@ -9,15 +9,17 @@ RUN apt-get update && apt-get install -y \
 
 # Install Ollama CLI
 RUN curl -fsSL https://ollama.com/install.sh | sh
+
 # Install Python dependencies
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Pull the required Ollama model
-RUN ollama pull phi4-mini
-
 # Copy application code
 COPY . .
 
-# Start Ollama server and run the FastAPI app
-CMD ["sh", "-c", "ollama serve & uvicorn main:app --host 0.0.0.0 --port 8000"]
+# Set up the entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Use the entrypoint script to start the server and pull the model
+ENTRYPOINT ["/entrypoint.sh"]
