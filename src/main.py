@@ -46,13 +46,11 @@ def load_and_index_documents():
     """
     print(f"Loading and indexing documents from '{DOCUMENTS_DIR}'...")
     indexed_files = {metadata['source'] for metadata in collection.get(include=["metadatas"])['metadatas']}
-    
     for filepath in DOCUMENTS_DIR.glob("*.txt"):
         print(f"Buscando en {filepath}")
         if str(filepath) in indexed_files:
             print(f"Skipping '{filepath}', already indexed.")
-            continue
-            
+            continue         
         print(f"Indexing '{filepath}'...")
         with open(filepath, 'r', encoding='utf-8') as f:
             text = f.read()
@@ -112,21 +110,20 @@ async def rag_stream_endpoint(request: RAGRequest):
         )
         retrieved_chunks = results['documents'][0]
         retrieved_context = "\n\n---\n\n".join(retrieved_chunks)
-        
         # 2. Create the prompt for the language model
-        prompt = f"Based on the following context, answer the question. If the context does not contain the answer, say so.\n\nContext: {retrieved_context}\n\nQuestion: {request.query}\n\nAnswer:"
-        
+        prompt = f"""Based on the following context, answer the question. 
+        If the context does not contain the answer, say so.\n\n 
+        Context: {retrieved_context}\n\n
+        Question: {request.query}\n\nAnswer:"""
         # 3. Stream the response from Ollama
         response_generator = ollama.generate(
             model=llm_model_name, 
             prompt=prompt, 
             stream=True
         )
-        
         for chunk in response_generator:
             if 'response' in chunk:
                 yield chunk['response']
-    
     return StreamingResponse(stream(), media_type="text/plain")
 
 if __name__ == "__main__":
