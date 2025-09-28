@@ -22,14 +22,12 @@ CHROMA_PATH.mkdir(exist_ok=True)
 llm_model_name = "tinyllama:1.1b" 
 #llm_model_name = "qwen2:7b-instruct-q4_0"
 
-# NEW: Set up the embedding function for ChromaDB
 # This tells Chroma how to turn text into embeddings.
 # It will automatically download and use the 'all-MiniLM-L6-v2' model.
 sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(
-    model_name="all-MiniLM-L6-v2"
+    model_name="all-mpnet-base-v2"
 )
 
-# NEW: Set up the ChromaDB client and collection
 # This client persists data to the 'chroma_data' directory.
 chroma_client = chromadb.PersistentClient(path=str(CHROMA_PATH))
 

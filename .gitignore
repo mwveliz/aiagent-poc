@@ -2,6 +2,5 @@
 src/__pycache__/*.pyc
 src/rag/__pycache__/__init__.cpython-311.pyc
 src/rag/__pycache__/rag.cpython-311.pyc
-src/my_documents
 chroma_data/**
 my_documents/**
